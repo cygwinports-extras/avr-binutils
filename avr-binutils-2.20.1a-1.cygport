@@ -1,5 +1,4 @@
 TOOLCHAIN_TARGET="avr"
-ORIG_PN="binutils"
 inherit toolchain
 
 DESCRIPTION="Binutils for AVR toolchain"
@@ -9,6 +8,7 @@ case ${PV[3]} in
 	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${PV}.tar.bz2" ;;
 *)	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.bz2" ;;
 esac
+SRC_DIR="binutils-${PV%[a-z]}"
 PATCH_URI="config-rpath.patch"
 
 src_install() {
