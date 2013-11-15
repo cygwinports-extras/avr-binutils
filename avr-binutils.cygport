@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="avr"
 inherit toolchain
 
 NAME="avr-binutils"
-VERSION=2.23.1
+VERSION=2.23.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for AVR toolchain"
@@ -15,7 +15,12 @@ case ${VERSION} in
 *)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
 esac
 SRC_DIR="binutils-${VERSION%[a-z]}"
-PATCH_URI="http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/30-binutils-2.20.1-avr-size.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/30-binutils-2.20.1-avr-size.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/avr-binutils-2.23.2-fixtex.patch
+	2.21.1a-textdomain.patch
+	2.21.1a-Wimplicit-decls.patch
+"
 
 CYGCONF_ARGS="--disable-werror"
 
@@ -24,5 +29,5 @@ src_install() {
 	cyginstall
 
 	# conflicts with native binutils
-	rm -fr ${D}/usr/lib/ ${D}/usr/share/{info,locale}/
+	rm -fr ${D}/usr/lib/ ${D}/usr/share/info/
 }
