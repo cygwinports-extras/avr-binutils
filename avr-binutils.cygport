@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="avr"
 inherit toolchain
 
 NAME="avr-binutils"
-VERSION=2.23.2
+VERSION=2.24
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for AVR toolchain"
@@ -17,9 +17,15 @@ esac
 SRC_DIR="binutils-${VERSION%[a-z]}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/30-binutils-2.20.1-avr-size.patch
-	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/avr-binutils-2.23.2-fixtex.patch
-	2.21.1a-textdomain.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8501.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8502pre.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8502a.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8503.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8504.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-dirtravel.patch
+	http://pkgs.fedoraproject.org/cgit/avr-binutils.git/plain/binutils-2.24-cve_2014_8738.patch
 	2.21.1a-Wimplicit-decls.patch
+	2.24-textdomain.patch
 "
 
 CYGCONF_ARGS="--disable-werror"
